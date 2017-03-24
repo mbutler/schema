@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE PAGE SYSTEM "http://www.mbutler.org/schema/SET_OF_PAGES.dtd">
+<?xml-stylesheet type="text/css" href="page.css"?>
+<PAGE PERIMETER="0" PAPER_STOCK="NA" PAPER_WEIGHT="NA">
+    <TEXT PERCENT_OF_PAGE="20" FONT="GARAMOND" FONT_SIZE="12">
+        <COLUMN>
+            <LINE>
+                <WORD NUMBER_OF_LETTERS="5" CAPITALIZED="YES" ITALICIZED="NO" PART_OF_SPEECH="NOUN">
+                    <DATA>Birds</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="PREPOSITION">
+                    <DATA>of</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="1" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NA">
+                    <DATA>a</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="7" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NOUN">
+                    <DATA>feather</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="5" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NOUN">
+                    <DATA>flock</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="8" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="ADVERB">
+                    <DATA>together,</DATA>
+                </WORD>
+            </LINE>
+            <LINE>
+                <WORD NUMBER_OF_LETTERS="3" CAPITALIZED="YES" ITALICIZED="NO" PART_OF_SPEECH="CONJUNCTION">
+                    <DATA>And</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="ADVERB">
+                    <DATA>so</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NA">
+                    <DATA>will</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NOUN">
+                    <DATA>pigs</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="3" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="CONJUNCTION">
+                    <DATA>and</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="5" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NOUN">
+                    <DATA>swine;</DATA>
+                </WORD>
+            </LINE>
+            <LINE>
+                <WORD NUMBER_OF_LETTERS="4" CAPITALIZED="YES" ITALICIZED="NO" PART_OF_SPEECH="NOUN">
+                    <DATA>Rats</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="3" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="CONJUNCTION">
+                    <DATA>and</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NOUN">
+                    <DATA>mice</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NA">
+                    <DATA>will</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NA">
+                    <DATA>have</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="5" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="PRONOUN">
+                    <DATA>their</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="6" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NOUN">
+                    <DATA>choice,</DATA>
+                </WORD>
+            </LINE>
+            <LINE>
+                <WORD NUMBER_OF_LETTERS="3" CAPITALIZED="YES" ITALICIZED="NO" PART_OF_SPEECH="CONJUNCTION">
+                    <DATA>And</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="ADVERB">
+                    <DATA>so</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NA">
+                    <DATA>will</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="1" CAPITALIZED="YES" ITALICIZED="NO" PART_OF_SPEECH="PRONOUN">
+                    <DATA>I</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NA">
+                    <DATA>have</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO">
+                    <DATA>mine.</DATA>
+                </WORD>
+            </LINE>
+        </COLUMN>
+    </TEXT>
+</PAGE>
+
+
+

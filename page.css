@@ -1,0 +1,19 @@
+/* CSS Document */
+
+PAGE
+{
+background-color: #ffffff;
+width: 100%;
+font:Arial, Helvetica, sans-serif;
+font-size:12px
+}
+
+LINE
+{display:block
+}
+
+DATA
+{
+margin-bottom: 30pt;
+margin-left: 0;
+}

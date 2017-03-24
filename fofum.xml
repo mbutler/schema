@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE PAGE SYSTEM "http://www.mbutler.org/schema/SET_OF_PAGES.dtd">
+<?xml-stylesheet type="text/css" href="page.css"?>
+<PAGE PERIMETER="0" PAPER_STOCK="NA" PAPER_WEIGHT="NA">
+    <TEXT PERCENT_OF_PAGE="20" FONT="GARAMOND" FONT_SIZE="12">
+        <COLUMN>
+            <LINE>
+                <WORD NUMBER_OF_LETTERS="3" CAPITALIZED="YES" ITALICIZED="NO"  PART_OF_SPEECH="NA">
+                    <DATA>Fee!</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="3" CAPITALIZED="YES" ITALICIZED="NO" PART_OF_SPEECH="NOUN">
+                    <DATA>Fie!</DATA>
+                </WORD>
+                 <WORD NUMBER_OF_LETTERS="3" CAPITALIZED="YES" ITALICIZED="NO" PART_OF_SPEECH="NOUN">
+                     <DATA>Foe!</DATA>
+                 </WORD>
+                <WORD NUMBER_OF_LETTERS="3" CAPITALIZED="YES" ITALICIZED="NO" PART_OF_SPEECH="NOUN">
+                    <DATA>Fum!</DATA>
+                </WORD>
+            </LINE>
+            <LINE>
+                <WORD NUMBER_OF_LETTERS="1" CAPITALIZED="YES" ITALICIZED="NO"  PART_OF_SPEECH="PRONOUN">
+                    <DATA>I</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="5" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NA">
+                    <DATA>smell</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="3" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NA">
+                    <DATA>the</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="5" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NOUN">
+                    <DATA>blood</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="PREPOSITION">
+                    <DATA>of</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NA">
+                    <DATA>an</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="10" CAPITALIZED="YES" ITALICIZED="NO" PART_OF_SPEECH="NOUN">
+                    <DATA>Englishman.</DATA>
+                </WORD>
+            </LINE>
+            <LINE>
+                <WORD NUMBER_OF_LETTERS="2" CAPITALIZED="YES" ITALICIZED="NO" PART_OF_SPEECH="NA">
+                    <DATA>Be</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NOUN">
+                    <DATA>he</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="ADJECTIVE">
+                    <DATA>'live</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="CONJUNCTION">
+                    <DATA>or</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NA">
+                    <DATA>be</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="PRONOUN">
+                    <DATA>he</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="ADVERB">
+                    <DATA>dead,</DATA>
+                </WORD>
+            </LINE>
+            <LINE>
+                <WORD NUMBER_OF_LETTERS="3" CAPITALIZED="YES" ITALICIZED="NO" PART_OF_SPEECH="PRONOUN">
+                    <DATA>I'll</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="5" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NA">
+                    <DATA>grind</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="3" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="PRONOUN">
+                    <DATA>his</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="5" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NOUN">
+                    <DATA>bones</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="INFINITIVE">
+                    <DATA>to</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NA">
+                    <DATA>make</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="PRONOUN"> 
+                    <DATA>my</DATA>
+                </WORD>
+                <WORD NUMBER_OF_LETTERS="5" CAPITALIZED="NO" ITALICIZED="NO" PART_OF_SPEECH="NOUN">
+                    <DATA>bread.</DATA>
+                </WORD>
+            </LINE>
+        </COLUMN>
+    </TEXT>
+</PAGE>
+
+
+

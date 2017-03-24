@@ -1,0 +1,1378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+<head>
+
+<title>An XML translation of Dan Graham's Schema</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+
+</head>
+
+<body text="#000000" bgcolor="#FFFFCC">
+
+<p><font face="Verdana, Arial, Helvetica, sans-serif"><strong><font size="5" color="#000000">An
+
+XML translation of Dan Graham's <em>Schema</em></font></strong>
+
+<br> 
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">In 1966 conceptual
+
+artist Dan Graham composed a language based work entitled <em>Schema</em>.
+
+The artwork consisted of a formal procedure for how to describe a
+
+document, or a "set of pages," with no real reference to the content of
+
+that document. This schema, as he called it, shares a remarkable
+
+similarity with XML, invented over 30 years later.</font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">The conceptual
+
+artists of the late 1960's and early 1970's were interested in the nonvisual
+
+abstraction of art and how artworks might be represented as information. Using
+
+language in a non-literary and non-poetic manner, they sought to continue the
+
+tradition of visual artists in a search for abstraction and minimalism. Many
+
+conceptual works of this time were simply words on paper, instructions, or thought
+
+experiments. <em>Schema</em> allowed
+
+the viewer to be aware of the material nature and structure of the document
+
+they were holding -- as well as <em>any</em> document they might hold. Using XML, I have created a machine-readable translation of his important
+
+1966 work.</font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><em>Schema</em> was
+
+originally published in issue 5+6 of Aspen magazine. It is now being archived
+
+at UbuWeb and can be viewed <a href="http://www.ubu.com/concept/graham_schema.html">here</a>.</font></p>
+
+<p><font size="3" face="Verdana, Arial, Helvetica, sans-serif"><strong><font size="4">The
+
+Translation</font></strong></font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Rather than starting
+
+from a group of documents or a particular domain, I wanted to translate this pre-existing
+
+conceptual writing into either a valid XML DTD or schema. Using an XML schema to accomplish
+
+this was tempting, mostly because Graham used the word <em>schema</em> to describe his
+
+approach and it seemed tidier to use an XML schema to do the translation. However
+
+I wanted this translation to be accessible and I felt DTDs were much more readable to the layperson. Though DTDs
+
+are less powerful and their usefulness is being questioned, their internal logic
+
+can be easily grasped. Therefore my conceptual translation was done as a DTD. </font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Since Graham, in
+
+his instructions for <em>Schema</em>,
+
+called it a schema for a "set of pages," that is what I've named my
+
+DTD. In Graham's original text, the elements were not in a specific
+
+order.&nbsp; The most difficult part of the translation was converting
+
+Graham's loose structure to the strict nested structure of XML.&nbsp; I
+
+think
+
+it works because it starts by describing the structure of the page
+
+itself then moves to the text and then to the structure of the text. To
+
+make the XML work, in certain places it was
+
+required that I invent descriptions where Graham had none. I invented
+
+the &lt;DATA> tag to hold the content of &lt;WORD>. In addition,
+
+I
+
+needed to add an NA attribute since many of the parts of speech were
+
+not covered in Graham's original work.</font></p>
+
+<p><font size="3" face="Verdana, Arial, Helvetica, sans-serif"><strong><font size="2">SET_OF_PAGES.dtd
+
+
+
+<br> (http://www.mbutler.org/schema/SET_OF_PAGES.dtd) </font></strong></font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000099">&lt;?xml
+
+version="1.0" encoding="UTF-8"?>
+
+
+
+<br>
+
+&lt;!ELEMENT PAGE (TEXT)>
+
+
+
+<br>
+
+&lt;!ATTLIST PAGE
+
+
+
+<br> PERIMETER CDATA #REQUIRED
+
+
+
+<br> PAPER_STOCK CDATA #IMPLIED
+
+
+
+<br> PAPER_WEIGHT CDATA #IMPLIED>
+
+
+
+<br>
+
+<br>
+
+&lt;!ELEMENT TEXT (COLUMN+)>
+
+
+
+<br>
+
+&lt;!ATTLIST TEXT
+
+
+
+<br> PERCENT_OF_PAGE CDATA #REQUIRED
+
+
+
+<br> FONT CDATA #REQUIRED
+
+
+
+<br> DEPRESSIONS_ON_SURFACE CDATA #IMPLIED
+
+
+
+<br> FONT_SIZE CDATA #REQUIRED>
+
+
+
+<br>
+
+<br>
+
+&lt;!ELEMENT COLUMN (LINE+)>
+
+
+
+<br>
+
+&lt;!ELEMENT LINE (WORD+)>
+
+
+
+<br>
+
+&lt;!ELEMENT WORD (DATA)>
+
+
+
+<br>
+
+&lt;!ELEMENT DATA (#PCDATA) >
+
+
+
+<br>
+
+&lt;!ATTLIST WORD
+
+
+
+<br>
+
+CAPITALIZED (YES | NO) "NO"
+
+
+
+<br>
+
+ITALICIZED (YES | NO) "NO"
+
+
+
+<br> NUMBER_OF_LETTERS CDATA #REQUIRED
+
+
+
+<br> PART_OF_SPEECH (ADJECTIVE | ADVERB | CONJUNCTION | GERUND | INFINITIVE | NOUN
+
+| MATH_SYMBOL | NUMERAL | PREPOSITION | PRONOUN | PARTICIPLE | NA) "NA"></font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000000">At this
+
+point the mission has been accomplished. This DTD expresses what Graham expressed
+
+in 1966 and I have a machine-readable version of his original work. It's interesting
+
+to note that Graham leaves out several descriptions that would be useful for
+
+a functioning XML document, such as a provision for verbs.  I've attempted to stay true to his
+
+original vision as closely as possible. The project doesn't need to be carried
+
+out further, but it would be interesting to actually apply it to some documents.</font></p>
+
+<p><font face="Verdana, Arial, Helvetica, sans-serif" color="#000000"><strong><font size="4">The
+
+Application</font></strong></font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000000">I
+
+was tempted to mark up Graham's original document to continue in the
+
+conceptual tradition of reflexivity.&nbsp; However for ease of use and
+
+greater comprehension, I've marked up a couple of simple nursery
+
+rhymes. I was
+
+afraid, with the complexity of XML and the DTD, that being too
+
+self-referential would
+
+just add to confusion. Also, because <em>Schema</em> called for the description
+
+of each and every word in a document, this would have been an extremely daunting
+
+task to mark up more than a few sentences. The domain of documents that this project
+
+calls for is literally any printed set of pages, so anything on paper can work.
+
+I typed out a couple of my favorite small rhymes to which to apply the DTD.</font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000000"><strong>Poem
+
+#1</strong>
+
+<br> 12 point Arial font on normal office paper</font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Fee! Fie! Foe!
+
+Fum!
+
+
+
+<br> I smell the blood of an Englishman.
+
+
+
+<br> Be he 'live or be he dead,
+
+
+
+<br> I'll grind his bones to make my bread.</font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>Poem #2</strong>
+
+<br> 12 point Arial font on normal office paper</font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Birds of a feather
+
+flock together,
+
+
+
+<br> And so will pigs and swine;
+
+
+
+<br> Rats and mice will have their choice,
+
+
+
+<br> And so will I have mine.</font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">The task here is
+
+to represent the children's poem in XML, paying attention to what Graham was
+
+paying attention to in 1966. We must be aware of paper stock, font, parts of
+
+speech, etc. We must also be able to view the XML poem in a format that is the
+
+same as the original document. This was accomplished by transforming the XML
+
+file into HTML via a cascading style sheet.</font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">To determine the
+
+part of speech of each word, I used the <a href="http://tamas.nlm.nih.gov/taggercgi.html">Parts
+
+of Speech Tagger</a> developed by the Specialized Information Services Division
+
+(SIS) of the National Library of Medicine (NLM).</font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Here is the XML
+
+translation of Poem #1 utilizing the XML DTD translation of Graham's conceptual
+
+artwork.
+
+
+
+<br>
+
+<br> <strong>fofum.xml
+
+
+
+<br> (http://www.mbutler.org/schema/fofum.xml) </strong></font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000099">&lt;?xml
+
+version="1.0" encoding="UTF-8"?>
+
+
+
+<br>
+
+&lt;!DOCTYPE PAGE SYSTEM "http://www.mbutler.org/schema/SET_OF_PAGES.dtd">
+
+
+
+<br>
+
+&lt;?xml-stylesheet type="text/css" href="page.css"?>
+
+
+
+<br>
+
+&lt;PAGE PERIMETER="20625 mm" PAPER_STOCK="30% recycled"
+
+PAPER_WEIGHT="75 g">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;TEXT PERCENT_OF_PAGE="20" FONT="ARIAL"
+
+FONT_SIZE="12">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;COLUMN>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;LINE>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="3" CAPITALIZED="YES" ITALICIZED="NO"
+
+PART_OF_SPEECH="NA">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>Fee!&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="3" CAPITALIZED="YES" ITALICIZED="NO"
+
+PART_OF_SPEECH="NOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>Fie!&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="3" CAPITALIZED="YES" ITALICIZED="NO"
+
+PART_OF_SPEECH="NOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>Foe!&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="3" CAPITALIZED="YES" ITALICIZED="NO"
+
+PART_OF_SPEECH="NOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>Fum!&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/LINE>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;LINE>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="1" CAPITALIZED="YES" ITALICIZED="NO"
+
+PART_OF_SPEECH="PRONOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>I&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="5" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NA">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>smell&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="3" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NA">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>the&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="5" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>blood&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="PREPOSITION">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>of&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NA">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>an&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="10" CAPITALIZED="YES" ITALICIZED="NO"
+
+PART_OF_SPEECH="NOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>Englishman.&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/LINE>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;LINE>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="2" CAPITALIZED="YES" ITALICIZED="NO"
+
+PART_OF_SPEECH="NA">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>Be&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>he&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="ADJECTIVE">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>'live&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="CONJUNCTION">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>or&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NA">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>be&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="PRONOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>he&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="ADVERB">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>dead,&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/LINE>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;LINE>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="3" CAPITALIZED="YES" ITALICIZED="NO"
+
+PART_OF_SPEECH="PRONOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>I'll&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="5" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NA">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>grind&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="3" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="PRONOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>his&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="5" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>bones&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="INFINITIVE">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>to&lt;/DATA>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NA">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>make&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="PRONOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>my&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="5" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>bread.&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/LINE>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/COLUMN>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/TEXT>
+
+
+
+<br>
+
+&lt;/PAGE></font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">Here is the XML
+
+translation of Poem #2 utilizing the XML DTD translation of Graham's conceptual
+
+artwork.
+
+
+
+<br>
+
+<br> <strong>birds.xml
+
+
+
+<br> (http://www.mbutler.org/schema/birds.xml) </strong></font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000099">&lt;?xml
+
+version="1.0" encoding="UTF-8"?>
+
+
+
+<br>
+
+&lt;!DOCTYPE PAGE SYSTEM "http://www.mbutler.org/schema/SET_OF_PAGES.dtd">
+
+
+
+<br>
+
+&lt;?xml-stylesheet type="text/css" href="page.css"?>
+
+
+
+<br>
+
+&lt;PAGE PERIMETER="20625 mm" PAPER_STOCK="30% recycled"
+
+PAPER_WEIGHT="75 g">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;TEXT PERCENT_OF_PAGE="20" FONT="ARIAL"
+
+FONT_SIZE="12">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;COLUMN>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;LINE>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="5" CAPITALIZED="YES" ITALICIZED="NO"
+
+PART_OF_SPEECH="NOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>Birds&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="PREPOSITION">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+&lt;DATA>of&lt;/DATA>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="1" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NA">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>a&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="7" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>feather&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="5" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>flock&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="8" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="ADVERB">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>together,&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/LINE>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;LINE>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="3" CAPITALIZED="YES" ITALICIZED="NO"
+
+PART_OF_SPEECH="CONJUNCTION">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>And&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="ADVERB">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>so&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NA">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>will&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>pigs&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="3" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="CONJUNCTION">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>and&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="5" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>swine;&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/LINE>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;LINE>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="4" CAPITALIZED="YES" ITALICIZED="NO"
+
+PART_OF_SPEECH="NOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>Rats&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="3" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="CONJUNCTION">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>and&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>mice&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NA">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>will&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NA">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>have&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="5" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="PRONOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>their&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="6" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>choice,&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/LINE>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;LINE>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="3" CAPITALIZED="YES" ITALICIZED="NO"
+
+PART_OF_SPEECH="CONJUNCTION">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>And&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="2" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="ADVERB">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>so&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NA">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>will&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="1" CAPITALIZED="YES" ITALICIZED="NO"
+
+PART_OF_SPEECH="PRONOUN">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>I&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO"
+
+PART_OF_SPEECH="NA">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>have&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;WORD
+
+NUMBER_OF_LETTERS="4" CAPITALIZED="NO" ITALICIZED="NO">
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;DATA>mine.&lt;/DATA>
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/WORD>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/LINE>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/COLUMN>
+
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/TEXT>
+
+
+
+<br>
+
+&lt;/PAGE>
+
+
+
+<br> </font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">The documents are
+
+represented the way Graham set in <em>Schema</em>, but to display it in it's original
+
+form in HTML, we need to use either XSLT or CSS to transform it. In this case
+
+I used CSS for its ease of use. Here is the style sheet I wrote to do this.</font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><strong>page.css
+
+
+
+<br> (http://www.mbutler.org/schema/page.css)</strong></font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000099">/*
+
+CSS Document */
+
+
+
+<br> PAGE
+
+
+
+<br> {
+
+
+
+<br> background-color: #ffffff;
+
+
+
+<br> width: 100%;
+
+
+
+<br> font:Arial, Helvetica, sans-serif;
+
+
+
+<br> font-size:12px
+
+
+
+<br> }
+
+
+
+<br> LINE
+
+
+
+<br> {display:block
+
+
+
+<br> }
+
+
+
+<br> DATA
+
+
+
+<br> {
+
+
+
+<br> margin-bottom: 30pt;
+
+
+
+<br> margin-left: 0;
+
+
+
+<br> }</font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000000">Now,
+
+when you view the XML documents using the latest web browsers, they should appear
+
+in their original form. </font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><a href="http://www.mbutler.org/schema/fofum.xml">Poem
+
+#1</a></font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif"><a href="http://www.mbutler.org/schema/birds.xml">Poem
+
+#2</a></font></p>
+
+<p><font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#000000">However they contain much more information, as detailed by Dan Graham almost 40 years
+
+ago.</font></p>
+
+<p><font color="#000000" size="2" face="Verdana, Arial, Helvetica, sans-serif"><a href="http://rhizome.org/object.rhiz?34361"><font size="1">visit rhizome.org project page</font></a><br>
+    <font size="1"><a href="http://www.mattbutler.net">return to portfolio</a></font><br>
+</font></p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+</body>
+
+</html>
